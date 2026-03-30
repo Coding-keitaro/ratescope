@@ -5,8 +5,8 @@ export interface SliderRowProps {
   max: number;
   step: number;
   value: number;
-  unit: string; // "%" | "万円" | "億円"
-  formatter?: (v: number) => string; // カスタム表示形式
+  unit: string;
+  formatter?: (v: number) => string;
   onChange: (value: number) => void;
 }
 
@@ -33,4 +33,36 @@ export interface TabDef {
   id: TabId;
   label: string;
   shortLabel: string;
+}
+
+// ─── シミュレーター別 State 型 ────────────────────────────────────────
+
+export interface CapRateState {
+  interestRate: number;
+  annualNOI: number;
+}
+
+export interface LeverageState {
+  borrowingRate: number;
+  ltv: number;
+  propertyCapRate: number;
+}
+
+export interface RefinanceState {
+  initialRate: number;
+  refinanceRate: number;
+  loanAmount: number;
+}
+
+export interface DscrState {
+  noi: number;
+  loanAmount: number;
+  loanRate: number;
+}
+
+export interface AllSimulatorStates {
+  caprate: CapRateState;
+  leverage: LeverageState;
+  refinance: RefinanceState;
+  dscr: DscrState;
 }

@@ -9,12 +9,38 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media print {
+  /* ナビ・スライダー・ボタン類を非表示 */
+  nav,
+  input[type="range"],
+  .print\:hidden {
+    display: none !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  /* カードの背景・ボーダーを印刷用に調整 */
+  .bg-white,
+  .dark\:bg-slate-800 {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  /* テキスト色を黒に統一 */
+  * {
+    color: inherit;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: 100% !important;
   }
 }
